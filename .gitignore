@@ -1,0 +1,10 @@
+**/pointnet_lib/build
+**/pointnet_lib/dist
+**/pointnet_lib/pointnet2.egg-info
+**/exps_self
+**/exps 
+**/dataset
+**/__pycache__
+**/checkpoints
+**/pretrained_models
+**/results
