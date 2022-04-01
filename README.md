@@ -1,5 +1,8 @@
 # Projective Manifold Gradient Layer for Deep Rotation Regression (CVPR 2022)
 
+## Introduction
+This project is based on our paper [Projective Manifold Gradient Layer for Deep Rotation Regression](https://arxiv.org/abs/2110.11657).
+
 ## Installation
 Create a new environment using [Anaconda](https://www.anaconda.com/) and install dependencies.
 ```
@@ -9,9 +12,10 @@ pip install -r requirements.txt
 ```
 
 ## Structure
+The implementation of our Regularized Projective Manifold Gradient(RPMG) Layer for rotation regression is in *utils/rpmg.py*. 
 Since our RPMG layer is a plug-in module which needs to be applied to other tasks, most of our codes are revised from other public repositories on github.
 
-To run each experiment, please see the README.md in each corresponding subfolder.
+To run each experiment, please see the *README.md* in each corresponding subfolder.
 
 ### 1. ModelNet_PC
 3D object pose estimation from ModelNet40 point clouds developed based on [RotationContinuity](https://github.com/papagina/RotationContinuity).
