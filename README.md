@@ -1,4 +1,3 @@
-# RPMG
-code for "Projective Manifold Gradient Layer For Deep Rotation Regression"
+# RPMG 
 
-# Code will be released soon.
+This html is developed based on [CAPTRA](https://github.com/yijiaweng/CAPTRA/blob/gh-pages)
