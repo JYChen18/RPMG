@@ -3,14 +3,6 @@
 ## Introduction
 This project is based on our paper [Projective Manifold Gradient Layer for Deep Rotation Regression](https://arxiv.org/abs/2110.11657).
 
-## Installation
-Create a new environment using [Anaconda](https://www.anaconda.com/) and install dependencies.
-```
-conda create -n rpmg python=3.7
-conda activate rpmg
-pip install -r requirements.txt
-```
-
 ## Structure
 The implementation of our **Regularized Projective Manifold Gradient(RPMG)** Layer for rotation regression is in *utils/rpmg.py*. 
 Since our RPMG layer is a **plug-in** module which needs to be applied to other tasks, most of our codes are revised from other public repositories on github.
