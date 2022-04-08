@@ -21,7 +21,7 @@
 	    <meta property="og:type"          content="website" />
 	    <meta property="og:title"         content="Projective Manifold Gradient Layer for Deep Rotation Regression" />
 	    <meta property="og:description"   content="Regressing rotations on SO(3) manifold using deep neural networks is an important yet unsolved problem. The gap between the Euclidean network output space and the non-Euclidean SO(3) manifold imposes a severe challenge for neural network learning in both forward and backward passes. While several works have proposed different regression-friendly rotation representations, very few works have been devoted to improving the gradient backpropagating in the backward pass. In this paper, we propose a manifold-aware gradient that directly backpropagates into deep network weights. Leveraging Riemannian optimization to construct a novel projective gradient, our proposed regularized projective manifold gradient (RPMG) method helps networks achieve new state-of-the-art performance in a variety of rotation estimation tasks. Our proposed gradient layer can also be applied to other smooth manifolds such as the unit sphere. Our project page is at https://jychen18.github.io/RPMG." />
-
+        <meta property="og:image" content="images/illustration.png" />
 	</head>
 	<body id="top">
 
@@ -84,12 +84,12 @@
 						
 						<hr style="margin-top: 2em;">
 						<h3>Method Overview</h3>
-						<span class="center"><img src="images/method.png" width="100%"></span>
+						<span class="center"><img src="images/method.png" width="75%"><img src="images/illustration.png" width="25%"></span>
 						<p style="text-align:left; width: 100%; margin-left: 0%">
-						<b>Figure 1</b>: In the forward pass, the network predicts a raw output x, which is then transformed into
+						<b>Figure 1</b>: <b style="font-weight: bold;">Regularized Projective Manifold Gradient Layer.</b> Left: full pipeline. Right: Illustration. In the forward pass, the network predicts a raw output x, which is then transformed into
                         a valid rotation R = ϕ(π(x)). We leave this forward pass unchanged and only modify the backward pass. In the backward pass, we first
                         use <b style="font-weight: bold;">Riemannian optimization</b> to get a goal rotation R<sub>g</sub> and map it back to ˆx<sub>g</sub> on the representation manifold M. After that we <b style="font-weight: bold;">find the
-                        element x<sub>gp</sub> </b> which is closest to the raw output in the inverse image of ˆx<sub>g</sub>, and finally get the gradient g<sub>RPM</sub> we want.</p>
+                        element x<sub>gp</sub> </b> which is closest to the raw output in the inverse image of ˆx<sub>g</sub>, and finally get the gradient g<sub>RPM</sub> we want.</p> 
 						
 						<hr style="margin-top: 2em;">
 						<h3>Results</h3>
@@ -106,18 +106,18 @@
                         errors after 600k training steps. Mn, Md and Acc are abbreviations of mean, median and 5<sup>◦</sup> accuracy. Right: median test error of <i>chair</i>
                         in different iterations during training. </p>
 						
-						<span class="center"><img src="images/selfsup_number.png" width="35%"></span>
+						<p style="text-align: center; margin-bottom: -3px;"><img src="images/selfsup_number.png" width="35%"></p>
 						<p style="text-align:left; width: 100%; margin-left: 0%">
 						<b>Table 3:</b> <b style="font-weight: bold;">Self-supervised instance-level 3D object pose estimation
                         from ModelNet40 chair by chamfer distance loss.</b> We report mean, median, and 3<sup>◦</sup> accuracy of (geodesic)
                         errors after 30k training steps. <css style="text-decoration: underline">9D-inf fails when our methods still perform very well.</css> </p>
 
-                        <span class="center"><img src="images/Camera_number.png" width="65%"></span>
+                        <p style="text-align: center; margin-bottom: -3px;"><img src="images/Camera_number.png" width="65%"></p>
 						<p style="text-align:left; width: 100%; margin-left: 0%">
 						<b>Table 4:</b> <b style="font-weight: bold;">Camera relocalization on Cambridge Landscape dataset.</b> We report the median error of translation and rotation of the best
                         checkpoint, which is chosen by minimizing the median error of rotation. We only care about the rotation error here, since we don't tune the loss weights for a fair comparison.</p>
 						
-                        <span class="center"><img src="images/sphere_number.png" width="35%"></span>
+                        <p style="text-align: center; margin-bottom: -3px;"><img src="images/sphere_number.png" width="35%"></p>
 						<p style="text-align:left; width: 100%; margin-left: 0%">
 						<b>Table 5:</b> <b style="font-weight: bold;">Unit vector regression from ModelNet40 bottle point clouds.</b> We report mean, median, and 1<sup>◦</sup> accuracy of (geodesic)
                         errors after 30k training steps. We can find that <css style="text-decoration: underline">our method can work well on other manifolds, <i>e.g.</i> S</css><sup>2</sup>. </p>
