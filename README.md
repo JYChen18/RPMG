@@ -1,7 +1,7 @@
 # Projective Manifold Gradient Layer for Deep Rotation Regression (CVPR 2022)
 
 ## Introduction
-This project is based on our paper [Projective Manifold Gradient Layer for Deep Rotation Regression](https://arxiv.org/abs/2110.11657). For more informations, you can also visit our [project page](https://jychen18.github.io/RPMG/).
+This project is based on our paper [Projective Manifold Gradient Layer for Deep Rotation Regression](https://arxiv.org/abs/2110.11657). For more information, you can also visit our [project page](https://jychen18.github.io/RPMG/).
 
 ## Structure
 The implementation of our **Regularized Projective Manifold Gradient(RPMG)** Layer for rotation regression is in *utils/rpmg.py*. 
