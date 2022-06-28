@@ -6,6 +6,7 @@ from PIL import Image
 import scipy.io
 import os
 from enum import IntEnum
+from pytorch3d import transforms as trans
 
 # format
 # data['record']: {
@@ -233,23 +234,6 @@ def mat_data_to_dict_data(mat_data, folder):
     ret[DICT_FILENAME] = os.path.join(folder, get_mat_element(record['filename']))
     return ret
 
-def compute_rotation_matrix_from_euler(euler):
-    batch = euler.shape[0]
-
-    c1 = torch.cos(euler[:, 0]).view(batch, 1)  # batch*1
-    s1 = torch.sin(euler[:, 0]).view(batch, 1)  # batch*1
-    c2 = torch.cos(euler[:, 2]).view(batch, 1)  # batch*1
-    s2 = torch.sin(euler[:, 2]).view(batch, 1)  # batch*1
-    c3 = torch.cos(euler[:, 1]).view(batch, 1)  # batch*1
-    s3 = torch.sin(euler[:, 1]).view(batch, 1)  # batch*1
-
-    row1 = torch.cat((c2 * c3, -s2, c2 * s3), 1).view(-1, 1, 3)  # batch*1*3
-    row2 = torch.cat((c1 * s2 * c3 + s1 * s3, c1 * c2, c1 * s2 * s3 - s1 * c3), 1).view(-1, 1, 3)  # batch*1*3
-    row3 = torch.cat((s1 * s2 * c3 - c1 * s3, s1 * c2, s1 * s2 * s3 + c1 * c3), 1).view(-1, 1, 3)  # batch*1*3
-
-    matrix = torch.cat((row1, row2, row3), 1)  # batch*3*3
-
-    return matrix
 
 def process_annotated_image(
     im, left, top, right, bottom, azimuth, elevation, theta,
@@ -300,8 +284,8 @@ def process_annotated_image(
         #im_crop = tf.clip_by_value(im_crop, 0.0, 1.0)
 
     # R = R_z(th) * R_x(el−pi/2) * R_z(−az)
-    R1 = compute_rotation_matrix_from_euler(torch.Tensor([0,0,-az]).unsqueeze(0))
-    R2 = compute_rotation_matrix_from_euler(torch.Tensor([el-np.pi/2.0, 0, th]).unsqueeze(0))
+    R1 = trans.euler_angles_to_matrix(torch.Tensor([-az, 0, 0]).unsqueeze(0), 'ZYX')
+    R2 = trans.euler_angles_to_matrix(torch.Tensor([th, 0, el - np.pi / 2.0]).unsqueeze(0), 'ZYX')
     R = torch.bmm(R2, R1)
 
     return tfs.ToTensor()(im), R
