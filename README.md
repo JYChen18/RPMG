@@ -7,8 +7,10 @@ This project is based on our paper [Projective Manifold Gradient Layer for Deep 
 The implementation of our **Regularized Projective Manifold Gradient(RPMG)** Layer for rotation regression is in *utils/rpmg.py*. 
 Since our RPMG layer is a **plug-in** module which needs to be applied to other tasks, most of our codes are revised from other public repositories on github.
 
+## Running
 To run each experiment, please see the *README.md* in each corresponding subfolder.
 
+## Experimental Results
 ### 1. ModelNet_PC
 3D object pose estimation from ModelNet40 point clouds developed based on [RotationContinuity](https://github.com/papagina/RotationContinuity).
 
@@ -19,7 +21,7 @@ Left: median test error of *airplane* in different iterations during training. R
 For more results, please see Exp. 5.1&5.3 in our main paper and Exp. 5.3 in supplementary material
 
 ### 2. ModelNet_Img 
-3D object pose estimation from ModelNet10 images developed based on [Spherical_Regression](https://github.com/leoshine/pherical_Regression).
+3D object pose estimation from ModelNet10 images developed based on [Spherical_Regression](https://github.com/leoshine/Spherical_Regression). 
 
 
 <span class="center"><img src="imgs/ModelNetimg_training_curve_chair.png" width="45%"> <img src="imgs/ModelNetimg_percentile_chair.png" width="45%"></span>
@@ -29,7 +31,7 @@ Left: median test error of *chair* in different iterations during training. Righ
 For more results, please see Exp. 5.2 in our main paper.
 
 ### 4. Pascal3D_Img
-3D object pose estimation from Pascal3D images developed based on [Spherical_Regression](https://github.com/leoshine/pherical_Regression).
+3D object pose estimation from Pascal3D images developed based on [Spherical_Regression](https://github.com/leoshine/Spherical_Regression).
 
 <span class="center"><img src="imgs/pascal_training_curve_sofa.png" width="45%"> <img src="imgs/pascal_percentile_sofa.png" width="45%"></span>
 
@@ -46,11 +48,12 @@ Please see 5.2 in supplementary material
 
 If you find our work useful in your research, please consider citing:
 ```
-@article{chen2021projective,
-  title={Projective Manifold Gradient Layer for Deep Rotation Regression},
-  author={Chen, Jiayi and Yin, Yingda and Birdal, Tolga and Chen, Baoquan and Guibas, Leonidas and Wang, He},
-  journal={arXiv preprint arXiv:2110.11657},
-  year={2021}
+@inproceedings{chen2022projective,
+  title={Projective manifold gradient layer for deep rotation regression},
+  author={Chen, Jiayi and Yin, Yingda and Birdal, Tolga and Chen, Baoquan and Guibas, Leonidas J and Wang, He},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={6646--6655},
+  year={2022}
 }
 ```
 
